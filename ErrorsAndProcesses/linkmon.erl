@@ -58,7 +58,7 @@ restarter() ->
 
 judge2(Band, Album) ->
 	Ref = make_ref(),
-	critic ! {self(), Ref {Band, Album}}, 
+	critic ! {self(), Ref, {Band, Album}}, 
 	receive
 		{Ref, Critics} -> Critics
 	after 2000 ->
