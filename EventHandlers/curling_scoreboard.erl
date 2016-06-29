@@ -12,9 +12,9 @@ handle_event({set_teams, TeamA, TeamB}, State) ->
     NewState = curling_scoreboard_hw:set_teams(State, TeamA, TeamB),
     {ok, NewState};
 handle_event({add_points, Team, Points}, State) ->
-    case curling_scoreboard_hw:add_point(State, Team, Points) of
+    case curling_scoreboard_hw:add_points(State, Team, Points) of
         {ok, NewState} -> {ok, NewState};
-        {err, _} -> {ok, State}
+        {error, _} -> {ok, State}
     end;
 handle_event(next_round, State) ->
     curling_scoreboard_hw:next_round(),
