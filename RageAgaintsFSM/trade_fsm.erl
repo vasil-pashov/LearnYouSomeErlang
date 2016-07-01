@@ -34,8 +34,8 @@ make_offer(OwnPid, Item) ->
 	gen_fsm:send_event(OwnPid, {make_offer, Item}).
 
 retract_offer(OwnPid, Item) ->
-	
 	gen_fsm:send_event(OwnPid, {retract_offer, Item}).
+	
 %% Mention that you're ready for a trade. When the other
 %% player also declares being ready, the trade is done
 
@@ -48,4 +48,5 @@ cancel(OwnPid) ->
 ask_negotiate(OtherPid, OwnPid) ->
 	gen_fsm:send_event(OtherPid, {ask_negotiate, OwnPid}).
 
-  
+accept_negotiate(OtherPid, OwnPid) ->
+	gen_fsm:send_event(OtherPid, {accept_negotiate, OwnPid}).  
