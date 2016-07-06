@@ -18,9 +18,10 @@ init([]) ->
     {ok,{{one_for_one, 6, 3600}, []}}.
 
 start_pool(Name, Limit, MFA) ->
+    io:format("Here~n"),
     ChildSpec = {Name,
-                 {ppool_sup, start_link, [Name, Limit, MFA],
-                  permanent, 10500, supervisor, [ppool_sup]}},
+                 {ppool_sup, start_link, [Name, Limit, MFA]},
+                 permanent, 10500, supervisor, [ppool_sup]},
     supervisor:start_child(ppool, ChildSpec).
 
 stop_pool(Name) ->

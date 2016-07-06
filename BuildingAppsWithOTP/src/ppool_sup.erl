@@ -11,5 +11,5 @@ init({Name, Limit, MFA}) ->
     MaxTime = 3600,
     {ok, {{one_for_all, MaxResttart, MaxTime},
           [{serv,
-           {ppool_ser, start_link, [Name, Limit, self(), MFA]},
-           permanent, 5000, worker, [ppool_ser]}]}}.
+           {ppool_serv, start_link, [Name, Limit, self(), MFA]},
+           permanent, 5000, worker, [ppool_serv]}]}}.
